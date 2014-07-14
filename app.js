@@ -14,7 +14,7 @@ var response =prompt('Would you like to Deposit(d), Withdraw(w), Quit(q)');
 
 while (response != 'q') {
  var amount =prompt('How much?(00.00)');
- amount = parseInt(amount);
+ amount = parseFloat(amount);
   if(response === 'd'){
     deposit.push(amount);
   } else if(response === 'w') {
@@ -35,19 +35,19 @@ for(var w = 0; w < withdrawn.length; w++){
 //}
 
 var Nbalance = Sbalance + sum - dif;
-
+Nbalance = Nbalance.toFixed(2);
 
 if(Nbalance < 0){
   debt = Nbalance - 50;
   console.log(chalk.red('You have overdrawn, We charged a fee of: 50.00.'));
   console.log('Starting Balance is: ' + Sbalance);
-  console.log(chalk.green('Deposits: '+ deposit.toString() +' = ' + sum));
-  console.log(chalk.red('Withdrawn: '+ withdrawn.toString() + ' = ' + dif));
-  console.log('Ending Balance: ' + debt);
+  console.log(chalk.green('Deposits: '+ deposit.join(" ") +' = ' + sum));
+  console.log(chalk.red('Withdrawn: '+ withdrawn.join(" ") + ' = ' + dif));
+  console.log(chalk.red('Ending Balance: ' + debt));
 } else {
   console.log('Starting Balance is: ' + Sbalance);
-  console.log(chalk.green('Deposits: '+ deposit.toString() +' = ' + sum));
-  console.log(chalk.red('Withdrawn: '+ withdrawn.toString() + ' = ' + dif));
-  console.log('Ending Balance: ' + Nbalance);
+  console.log(chalk.green('Deposits: '+ deposit.join(" ") +' = ' + sum));
+  console.log(chalk.red('Withdrawn: '+ withdrawn.join(" ") + ' = ' + dif));
+  console.log(chalk.cyan('Ending Balance: ' + Nbalance));
 }
 
